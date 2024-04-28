@@ -16,6 +16,27 @@ app.use(express.static(publicDirname));
 io.on("connection", (socket) => {
   console.log("A new user just connected");
 
+  socket.emit("newMessage", {
+    from: "Admin",
+    text: "Welcome to the chat app",
+    createdAt: new Date().getTime(),
+  });
+
+  socket.broadcast.emit("newMessage", {
+    from: "Admin",
+    text: "New User Join",
+    createdAt: new Date().getTime(),
+  });
+
+  socket.on("createMessage", (message) => {
+    console.log("created message", message);
+    io.emit("newMessage", {
+      from: message.from,
+      text: message.text,
+      createdAt: new Date().getTime(),
+    });
+  });
+
   socket.on("disconnect", () => {
     console.log("User was Disconnect");
   });
