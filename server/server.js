@@ -4,6 +4,8 @@ import http from "http";
 import express from "express";
 import { Server } from "socket.io";
 import "./dbConnect.js";
+import { Helper } from "../helper/helper.js";
+import { router } from "../routes/routes.js";
 
 // Public dirname
 const publicPath = url.fileURLToPath(import.meta.url);
@@ -15,8 +17,10 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 app.use(express.static(publicDirname));
+app.use("/", router);
 
 server.listen(port, () => {
+  Helper.generateRSAKeys();
   console.log(`Server is running at ${port}`);
 });
 

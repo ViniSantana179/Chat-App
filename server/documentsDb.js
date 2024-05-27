@@ -21,7 +21,7 @@ function getDocuments() {
 function newDocument(name) {
   const result = documents.insertOne({
     name,
-    text: `Start chating at ${name}`,
+    text: "",
   });
   return result;
 }

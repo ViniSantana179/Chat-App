@@ -17,6 +17,7 @@ function selectDocument(documentName) {
 }
 
 function textEditorEmit(data) {
+  console.log("MEUS DADOS", data);
   socket.emit("sendMessage", data);
 }
 
