@@ -7,6 +7,8 @@ import "./dbConnect.js";
 import { Helper } from "../helper/helper.js";
 import { router } from "../routes/routes.js";
 
+// Projeto WebSocket com Cripto
+
 // Public dirname
 const publicPath = url.fileURLToPath(import.meta.url);
 const publicDirname = path.join(publicPath, "../../public");
