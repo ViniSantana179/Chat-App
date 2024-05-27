@@ -5,6 +5,8 @@ import express from "express";
 import { Server } from "socket.io";
 import "./dbConnect.js";
 
+// Chat App sem Cripto
+
 // Public dirname
 const publicPath = url.fileURLToPath(import.meta.url);
 const publicDirname = path.join(publicPath, "../../public");
