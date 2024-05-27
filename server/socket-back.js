@@ -22,9 +22,9 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", async ({ message, documentName }) => {
     const update = await updateDocument(documentName, message);
-    if (update.modifiesCount) {
+    if (update.modifiedCount) {
       // Emitindo para salas especificas
-      socket.to(documentName).emit("sendMessageClients", document.text);
+      socket.to(documentName).emit("sendMessageClients", message);
     }
   });
 
